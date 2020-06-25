@@ -8,25 +8,37 @@ export default class GlossaryPicker extends Component {
 
     return (
       <span>
-        <h1>Glossary Author</h1>
-        <h3>
-          Current Glossary:
-          {' '}
-          <select onChange={e => onChange(e.target.value)} value={value}>
-            {options.map(option => (
-              <option value={option} key={option}>
-                {option}
-              </option>
-            ))}
-          </select>
-          {' '}
-          <NavLink
-            exact
-            to={`/newGlossary`}
-          >
-            New Glossary
-          </NavLink>
-        </h3>
+        <div class="bx--row">
+          <div class="bx--col">
+            <h1 style={{ textAlign: 'center' }}>Glossary Author</h1>
+          </div>
+        </div>
+        <div class="bx--row">
+          <div class="bx--col">
+            <h3 style={{ textAlign: 'center' }}>
+              Current Glossary:
+              {' '}
+              <select onChange={e => onChange(e.target.value)} value={value}>
+                {options.map(option => (
+                  <option value={option} key={option}>
+                    {option}
+                  </option>
+                ))}
+              </select>
+              {' '}
+            </h3>
+          </div>
+        </div>
+        <div class="box--row">
+          <div class="bx--col">
+            <NavLink
+              exact
+              to={`/newGlossary`}
+            >
+              New Glossary
+            </NavLink>
+          </div>
+        </div>
       </span>
     )
   }
