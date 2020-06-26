@@ -1,5 +1,7 @@
 import axios from 'axios'
 
+export const REQUEST_GLOSSARIES = 'REQUEST_GLOSSARIES'
+export const RECEIVE_GLOSSARIES = 'RECEIVE_GLOSSARIES'
 export const CREATE_GLOSSARY = 'CREATE_GLOSSARY'
 export const REQUEST_GLOSSARY = 'REQUEST_GLOSSARY'
 export const RECEIVE_GLOSSARY = 'RECEIVE_GLOSSARY'
@@ -7,6 +9,37 @@ export const REQUEST_TERMS = 'REQUEST_TERMS'
 export const RECEIVE_TERMS = 'RECEIVE_TERMS'
 export const SELECT_GLOSSARY = 'SELECT_GLOSSARY'
 export const INVALIDATE_GLOSSARY = 'INVALIDATE_GLOSSARY'
+
+function requestGlossaries(server, user) {
+  return {
+    type: REQUEST_GLOSSARIES,
+    server,
+    user
+  }
+}
+
+function receiveGlossaries(sevrer, user, json) {
+  return {
+    type: RECEIVE_GLOSSARIES,
+    server,
+    user,
+    glossaries: json.data.glossaries,
+    receivedAt: Date.now()
+  }
+}
+
+export function fetchGlossaries(server, user) {
+  return dispatch => {
+    dispatch(requestGlossaries(server, user))
+    // axios call
+    return axios.get(`https://localhost:19445/servers/${server}/open-metadata/access-services/subject-area/users/${user}/glossaries`)
+      .then(response => {
+        console.log(response)
+        return response
+      })
+      .then(() => dispatch(receiveGlossaries(server, user)))
+  }
+}
 
 function requestGlossary(glossary) {
   return {
