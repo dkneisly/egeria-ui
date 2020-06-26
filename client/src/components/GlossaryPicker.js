@@ -1,11 +1,24 @@
 import React, { Component } from 'react'
-import { Dropdown, Button } from 'carbon-components-react';
+import { Dropdown } from 'carbon-components-react';
 import { NavLink } from 'react-router-dom'
 import PropTypes from 'prop-types'
 
 
 export default class GlossaryPicker extends Component {
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      selectedItem: {
+        id: props.value || 'reactjs',
+        label: props.value || 'reactjs'
+      }
+    }
+  }
+
   render() {
+
     const { value, onChange, options } = this.props
 
     return (
@@ -28,7 +41,10 @@ export default class GlossaryPicker extends Component {
             <div style={{ width: '50%' }}>
               <Dropdown
                 light
-                onChange={(item) => onChange(item.selectedItem.label)}
+                onChange={(item) => {
+                  onChange(item.selectedItem.label)
+                  this.setState({ selectedItem: item.selectedItem })
+                }}
                 ariaLabel="Dropdown"
                 id="carbon-dropdown-example"
                 items={options.map(option => (
@@ -37,7 +53,8 @@ export default class GlossaryPicker extends Component {
                     label: option
                   }
                 ))}
-                label="reactjs"
+                selectedItem={this.state.selectedItem}
+                label="Select a Glossary"
               />
             </div>
           </div>
