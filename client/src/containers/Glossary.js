@@ -4,7 +4,8 @@ import PropTypes from 'prop-types'
 import {
   fetchTermsIfNeeded,
   invalidateGlossary,
-  selectGlossary
+  selectGlossary,
+  fetchGlossaries
 } from '../actions/glossary'
 import GlossaryPicker from '../components/GlossaryPicker'
 import ListOfTerms from '../components/ListOfTerms'
@@ -18,7 +19,11 @@ class Glossary extends Component {
 
   componentDidMount() {
     const { dispatch, selectedGlossary } = this.props
-    dispatch(fetchTermsIfNeeded(selectedGlossary))
+    let { server, user } = this.props
+    if (!server) server = 'cocoMDSx'
+    user = user || 'garygeeke'
+    dispatch(fetchGlossaries(server, user))
+    // dispatch(fetchTermsIfNeeded(selectedGlossary))
   }
 
   componentDidUpdate(prevProps) {
@@ -39,12 +44,6 @@ class Glossary extends Component {
     const { dispatch, selectedGlossary } = this.props
     dispatch(invalidateGlossary(selectedGlossary))
     dispatch(fetchTermsIfNeeded(selectedGlossary))
-  }
-
-  handleNewGlossaryClick(e) {
-    e.preventDefault()
-
-    
   }
 
   render() {
