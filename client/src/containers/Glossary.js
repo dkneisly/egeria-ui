@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
+import { Button } from 'carbon-components-react'
 import {
   fetchTermsIfNeeded,
   invalidateGlossary,
@@ -49,23 +50,36 @@ class Glossary extends Component {
   render() {
     const { selectedGlossary, terms, isFetching, lastUpdated } = this.props
     return (
-      <div>
+      <div class="bx--grid">
         <GlossaryPicker
           value={selectedGlossary}
           onChange={this.handleChange}
           options={['reactjs', 'frontend']}
         />
-        <p>
-          {!isFetching && (
-            <button onClick={this.handleRefreshClick}>Refresh</button>
-          )}
-          
-        </p>
-        {isFetching && terms.length === 0 && <h2>Loading...</h2>}
-        {!isFetching && terms.length === 0 && <h2>Empty.</h2>}
+        <div class="bx--row">
+          <div class="bx--col">
+            <p>
+              {!isFetching && (
+                <Button onClick={this.handleRefreshClick}>Refresh</Button>
+              )}
+            </p>
+          </div>
+        </div>
+        <div class="bx--row">
+          <div class="bx--col">
+            {isFetching && terms.length === 0 && <h2>Loading...</h2>}
+          </div>
+        </div>
+        <div class="bx--row">
+          <div class="bx--col">
+            {!isFetching && terms.length === 0 && <h2>Empty.</h2>}
+          </div>
+        </div>
         {terms.length > 0 && (
-          <div style={{ opacity: isFetching ? 0.5 : 1 }}>
-            <ListOfTerms terms={terms} />
+          <div class="bx--row" style={{ opacity: isFetching ? 0.5 : 1 }}>
+            <div class="bx--col">
+              <ListOfTerms terms={terms} />
+            </div>
           </div>
         )}
       </div>

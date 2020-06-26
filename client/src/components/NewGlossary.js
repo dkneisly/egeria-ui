@@ -51,15 +51,15 @@ const NewGlossary = () => (
           )}
         </Field>
         <div className="buttons">
-          <Button type="submit" disabled={submitting || invalid}>
-            Submit
-          </Button>
           <Button
             type="button"
             onClick={form.reset}
             disabled={submitting || pristine}
           >
             Reset
+          </Button>
+          <Button type="submit" disabled={submitting || invalid}>
+            Submit
           </Button>
         </div>
       </form>

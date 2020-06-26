@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@carbon/colors": "^10.11.0",
     "axios": "^0.19.2",
     "carbon-components": "^10.14.0",
     "carbon-components-react": "^7.14.0",
