@@ -10,6 +10,7 @@ import {
 import GlossaryPicker from '../components/GlossaryPicker'
 import ListOfTerms from '../components/ListOfTerms'
 
+
 class Glossary extends Component {
   constructor(props) {
     super(props)

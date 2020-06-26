@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
+import { Dropdown, Button } from 'carbon-components-react';
 import { NavLink } from 'react-router-dom'
 import PropTypes from 'prop-types'
+
 
 export default class GlossaryPicker extends Component {
   render() {
@@ -15,18 +17,29 @@ export default class GlossaryPicker extends Component {
         </div>
         <div class="bx--row">
           <div class="bx--col">
-            <h3 style={{ textAlign: 'center' }}>
-              Current Glossary:
-              {' '}
-              <select onChange={e => onChange(e.target.value)} value={value}>
-                {options.map(option => (
-                  <option value={option} key={option}>
-                    {option}
-                  </option>
+            <span>
+              <h3 style={{ textAlign: 'right' }}>
+                Current Glossary:
+              </h3>
+              
+            </span>
+          </div>
+          <div class="bx--col">
+            <div style={{ width: '50%' }}>
+              <Dropdown
+                light
+                onChange={(item) => onChange(item.selectedItem.label)}
+                ariaLabel="Dropdown"
+                id="carbon-dropdown-example"
+                items={options.map(option => (
+                  {
+                    id: option,
+                    label: option
+                  }
                 ))}
-              </select>
-              {' '}
-            </h3>
+                label="reactjs"
+              />
+            </div>
           </div>
         </div>
         <div class="box--row">

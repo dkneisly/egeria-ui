@@ -39,11 +39,11 @@ const HeaderAndSide = props => {
           <>
             <Header aria-label="IBM Platform Name">
               <SkipToContent />
-              <HeaderMenuButton
+              {/* <HeaderMenuButton
                 aria-label="Open menu"
                 onClick={onClickSideNavExpand}
                 isActive={isSideNavExpanded}
-              />
+              /> */}
               <HeaderName href="#" prefix="">
                 Egeria Configuration
               </HeaderName>
