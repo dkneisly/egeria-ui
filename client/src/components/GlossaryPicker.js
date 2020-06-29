@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Dropdown } from 'carbon-components-react';
+import { Dropdown, Button } from 'carbon-components-react';
 import { NavLink } from 'react-router-dom'
 import PropTypes from 'prop-types'
 
@@ -21,6 +21,8 @@ export default class GlossaryPicker extends Component {
 
     const { value, onChange, options } = this.props
 
+    console.log(`**** ${value} ***`)
+
     return (
       <span>
         <div class="bx--row">
@@ -28,6 +30,7 @@ export default class GlossaryPicker extends Component {
             <h1 style={{ textAlign: 'center' }}>Glossary Author</h1>
           </div>
         </div>
+        <div style={{ height: '20px' }}/>
         <div class="bx--row">
           <div class="bx--col">
             <span>
@@ -58,15 +61,27 @@ export default class GlossaryPicker extends Component {
               />
             </div>
           </div>
-        </div>
-        <div class="box--row">
           <div class="bx--col">
-            <NavLink
-              exact
-              to={`/newGlossary`}
-            >
-              New Glossary
-            </NavLink>
+            <div className={`top--btn-set`}>
+              <Button 
+                onClick={this.props.handleRefreshClick}
+                kind="secondary"
+                size="small"
+              >
+                Refresh
+              </Button>
+              <NavLink
+                exact
+                to={`/newGlossary`}
+              >
+                <Button 
+                  kind="primary"
+                  size="small"
+                >
+                  New Glossary
+                </Button>
+              </NavLink>
+            </div>
           </div>
         </div>
       </span>

@@ -55,25 +55,18 @@ class Glossary extends Component {
         <GlossaryPicker
           value={selectedGlossary}
           onChange={this.handleChange}
+          handleRefreshClick={this.handleRefreshClick}
           options={['reactjs', 'frontend']}
         />
+        <div style={{ height: isFetching && terms.length === 0 && '20px' }}/>
         <div class="bx--row">
           <div class="bx--col">
-            <p>
-              {!isFetching && (
-                <Button onClick={this.handleRefreshClick}>Refresh</Button>
-              )}
-            </p>
+            {isFetching && terms.length === 0 && <h3 style={{ textAlign: 'center' }}>Loading...</h3>}
           </div>
         </div>
         <div class="bx--row">
           <div class="bx--col">
-            {isFetching && terms.length === 0 && <h2>Loading...</h2>}
-          </div>
-        </div>
-        <div class="bx--row">
-          <div class="bx--col">
-            {!isFetching && terms.length === 0 && <h2>Empty.</h2>}
+            {!isFetching && terms.length === 0 && <h3 style={{ textAlign: 'center' }}>Empty.</h3>}
           </div>
         </div>
         {terms.length > 0 && (
