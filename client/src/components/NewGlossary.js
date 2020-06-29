@@ -20,51 +20,54 @@ const validate = values => {
 }
 
 const NewGlossary = () => (
-  <Form
-    onSubmit={onSubmit}
-    validate={validate}
-    render={({ handleSubmit, form, invalid, submitting, pristine }) => (
-      <form onSubmit={handleSubmit}>
-        <h2>New Glossary</h2>
-        <Field name="glossary-name">
-          {({ input, meta }) => (
-            <div>
-              <TextInput id="glossary-name" {...input} labelText="Glossary Name" placeholder="Unique Name" />
-              {meta.error && meta.touched && <span>{meta.error}</span>}
-            </div>
-          )}
-        </Field>
-        <Field name="glossary-description">
-          {({ input, meta }) => (
-            <div>
-              <TextInput id="glossary-description" {...input} labelText="Description" placeholder="Description" />
-              {meta.error && meta.touched && <span>{meta.error}</span>}
-            </div>
-          )}
-        </Field>
-        <Field name="glossary-qualified-name">
-          {({ input, meta }) => (
-            <div>
-              <TextInput id="glossary-qualified-name" {...input} labelText="Qualified Name" placeholder="" />
-              {meta.error && meta.touched && <span>{meta.error}</span>}
-            </div>
-          )}
-        </Field>
-        <div className="buttons">
-          <Button
-            type="button"
-            onClick={form.reset}
-            disabled={submitting || pristine}
-          >
-            Reset
-          </Button>
-          <Button type="submit" disabled={submitting || invalid}>
-            Submit
-          </Button>
-        </div>
-      </form>
-    )}
-  />
+  <div class="bx--grid">
+    <Form
+      onSubmit={onSubmit}
+      validate={validate}
+      render={({ handleSubmit, form, invalid, submitting, pristine }) => (
+        <form onSubmit={handleSubmit}>
+          <h1 style={{ textAlign: 'center' }}>New Glossary</h1>
+          <Field name="glossary-name">
+            {({ input, meta }) => (
+              <div>
+                <TextInput id="glossary-name" {...input} labelText="Glossary Name" placeholder="Unique Name" />
+                {meta.error && meta.touched && <span>{meta.error}</span>}
+              </div>
+            )}
+          </Field>
+          <Field name="glossary-description">
+            {({ input, meta }) => (
+              <div>
+                <TextInput id="glossary-description" {...input} labelText="Description" placeholder="Description" />
+                {meta.error && meta.touched && <span>{meta.error}</span>}
+              </div>
+            )}
+          </Field>
+          <Field name="glossary-qualified-name">
+            {({ input, meta }) => (
+              <div>
+                <TextInput id="glossary-qualified-name" {...input} labelText="Qualified Name" placeholder="" />
+                {meta.error && meta.touched && <span>{meta.error}</span>}
+              </div>
+            )}
+          </Field>
+          <div className="buttons" style={{ marginTop: '10px' }}>
+            <Button
+              type="button"
+              kind="secondary"
+              onClick={form.reset}
+              disabled={submitting || pristine}
+            >
+              Reset
+            </Button>
+            <Button type="submit" disabled={submitting || invalid}>
+              Submit
+            </Button>
+          </div>
+        </form>
+      )}
+    />
+  </div>
 )
 
 export default NewGlossary

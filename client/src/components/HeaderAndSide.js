@@ -1,4 +1,5 @@
 import React from 'react';
+import { LinkContainer } from 'react-router-bootstrap';
 import { HeaderContainer, Header, HeaderMenuButton, HeaderName, HeaderGlobalBar, HeaderGlobalAction, SkipToContent, SideNav, SideNavItems, SideNavLink } from 'carbon-components-react';
 import Search20 from "@carbon/icons-react/lib/search/20";
 import Notification20 from "@carbon/icons-react/lib/notification/20";
@@ -44,9 +45,11 @@ const HeaderAndSide = props => {
                 onClick={onClickSideNavExpand}
                 isActive={isSideNavExpanded}
               /> */}
-              <HeaderName href="#" prefix="">
-                Egeria Configuration
-              </HeaderName>
+              <LinkContainer to='/'>
+                <HeaderName href="#" prefix="">
+                  Egeria Configuration
+                </HeaderName>
+              </LinkContainer>
               <HeaderGlobalBar>
                 <HeaderGlobalAction aria-label="Search" onClick={() => {}}>
                   <Search20 />
